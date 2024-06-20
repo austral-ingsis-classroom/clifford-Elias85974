@@ -13,7 +13,7 @@ public class MkdirCommand implements Command {
         else {
             DirectoryNode directoryNode = new DirectoryNode(argument, currentDirectory);
             currentDirectory.addChild(directoryNode);
-            return argument + " directory created";
+            return "'" + argument + "'" + " directory created";
         }
     }
 }

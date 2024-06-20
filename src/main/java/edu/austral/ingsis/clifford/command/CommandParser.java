@@ -11,7 +11,11 @@ public class CommandParser {
     }
 
     public String parse(String argument) {
-        String commandArgument = argument.substring(0, argument.indexOf(" "));
+        int endIndex = argument.indexOf(" ");
+        if (endIndex == -1) {
+            endIndex = argument.length();
+        }
+        String commandArgument = argument.substring(0, endIndex);
         Command command;
         switch (commandArgument) {
             case "ls":

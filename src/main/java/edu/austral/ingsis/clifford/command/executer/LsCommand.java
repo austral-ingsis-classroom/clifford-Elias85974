@@ -16,11 +16,11 @@ public class LsCommand implements Command {
             if (argument.startsWith("--ord")) {
                 if (argument.endsWith("=asc")) {
                     for (String child : children.stream().sorted().toList()) {
-                        result.append(child);
+                        result.append(child).append(" ");
                     }
                 } else if (argument.endsWith("=desc")) {
                     for (String child : children.stream().sorted(Comparator.reverseOrder()).toList()) {
-                        result.append(child);
+                        result.append(child).append(" ");
                     }
                 } else {
                     return "Invalid argument";
@@ -29,10 +29,13 @@ public class LsCommand implements Command {
             else {
                 // Creation date order
                 for (String child : children) {
-                    result.append(child);
+                    result.append(child).append(" ");
                 }
             }
-            return result.toString();
+            if (!result.isEmpty()) {
+                return result.substring(0, result.length() - 1);
+            }
+            return "";
         } else {
             return "Not a directory";
         }
